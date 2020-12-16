@@ -1,5 +1,6 @@
 package com.example.note_yax
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -16,7 +17,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         initThings()
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        val adapter = ThingAdapter(thingList)
+        val adapter = MainAdapter(thingList)
         recyclerView.adapter = adapter
         buttonAdd.setOnClickListener(this)
     }
@@ -29,6 +30,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when(v){
             buttonAdd -> {
+                val intent = Intent(this,ThingActivity::class.java)
+                startActivity(intent)
                 
             }
         }

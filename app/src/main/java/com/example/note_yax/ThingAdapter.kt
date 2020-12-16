@@ -1,9 +1,11 @@
 package com.example.note_yax
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 
 class ThingAdapter(val thingList: List<Thing>): RecyclerView.Adapter<ThingAdapter.ViewHolder>() {
@@ -17,10 +19,16 @@ class ThingAdapter(val thingList: List<Thing>): RecyclerView.Adapter<ThingAdapte
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.thing_item,parent,false)
+        val viewHolder = ViewHolder(view)
+        viewHolder.itemView.setOnClickListener {
+            val position = viewHolder.adapterPosition
+            val thing = thingList[position]
+
+        }
         return ViewHolder(view)
     }
 
-     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val thing = thingList[position]
         holder.thingTitle.text = thing.title
         holder.thingContext.text = thing.context
