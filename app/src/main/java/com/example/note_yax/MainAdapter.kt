@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
 
-class MainAdapter(private val thingList: List<Thing>) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
+class MainAdapter(var thingList: List<Thing>) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var id: Int = 0
