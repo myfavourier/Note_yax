@@ -2,24 +2,32 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="50dp"
+    android:orientation="horizontal"
     android:background="#03A9F4">
 
-   <Button
-       android:id="@+id/back"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="back"
-       android:textColor="#FFF"
-       android:background="#03A9F4"/>
+
     <TextView
         android:id="@+id/titleText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_width="0dp"
+        android:layout_weight="6"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
         android:text="NotePad     "
-        android:gravity="right"
+        android:gravity="left|bottom"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
         android:textColor="#E9EAED"
         android:textSize="24sp"/>
+   <Button
+       android:id="@+id/buttonSort"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_weight="1"
+       android:text="sort"
+       android:textColor="#FFF"
+       android:background="#03A9F4"/>
+
+
 
 </LinearLayout>
 

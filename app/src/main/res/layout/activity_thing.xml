@@ -8,13 +8,63 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#00FFFFFF"
+        android:layout_marginLeft="10dp"
+        android:layout_marginVertical="10dp"
         android:hint="Title"/>
     <EditText
         android:id="@+id/editContext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Context"
+        android:layout_marginVertical="10dp"
+        android:layout_marginLeft="10dp"
         android:background="#00FFFFFF"/>
+    <EditText
+        android:id="@+id/editCreateTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="CreateTime"
+        android:layout_marginVertical="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="#00FFFFFF"/>
+    <EditText
+        android:id="@+id/editDateTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="DateTime"
+        android:layout_marginVertical="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="#00FFFFFF"/>
+    <EditText
+        android:id="@+id/editState"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Priority"
+        android:layout_marginVertical="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="#00FFFFFF"/>
+    <EditText
+        android:id="@+id/editPriority"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="State"
+        android:layout_marginVertical="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="#00FFFFFF"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/buttonAdd"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="100dp"
+            android:text="保存"
+            android:background="@drawable/drawcircle"/>
+    </RelativeLayout>
 
 
 </LinearLayout>

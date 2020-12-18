@@ -1,17 +1,26 @@
 package com.example.note_yax
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.example.note_yax.Data.map
 import kotlinx.android.synthetic.main.activity_thing.*
+import java.sql.Time
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ThingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_thing)
         supportActionBar?.hide()
-        //Toast.makeText(this, intent.getIntExtra("data", 0).toString(), Toast.LENGTH_LONG).show()
-        var text = intent.getStringExtra("data")
-        editTitle.setText(text)
+        var text = intent.getIntExtra("id", -1)
+        editTitle.setText(map[text]?.title)
+        editContext.setText(map[text]?.context)
+        editCreateTime.setText(map[text]?.createTime)
+        editDateTime.setText(map[text]?.dataTime)
+        editPriority.setText(map[text]?.priority.toString())
+        editState.setText(map[text]?.state.toString())
+
+
     }
 }
