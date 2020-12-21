@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 
 
 class MainAdapter(var thingList: List<Thing>) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
+
+
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var id: Int = 0

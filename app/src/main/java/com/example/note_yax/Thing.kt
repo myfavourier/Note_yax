@@ -8,4 +8,7 @@ open class Thing(val title: String,val context:String,val createTime:String,val 
         const val STATE_TOBEDONE = 0
         const val STATE_DONE = 1
     }
+    fun getDateTime(): String {
+        return this.dataTime
+    }
 }
