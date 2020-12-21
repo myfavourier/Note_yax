@@ -94,8 +94,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         recyclerView.adapter = adapter
         itemTouchHelper.attachToRecyclerView(recyclerView)
         buttonAdd.setOnClickListener(this)
-        buttonSort.setOnClickListener {
-            adapter.thingList =Data.sort()
+        buttonSortByPriority.setOnClickListener {
+            adapter.thingList =Data.sortByPriority()
+            adapter.notifyDataSetChanged()
+
+        }
+        buttonSortByDateTime.setOnClickListener {
+            adapter.thingList =Data.sortByDataTime()
             adapter.notifyDataSetChanged()
 
         }

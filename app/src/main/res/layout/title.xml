@@ -19,13 +19,21 @@
         android:textColor="#E9EAED"
         android:textSize="24sp"/>
    <Button
-       android:id="@+id/buttonSort"
+       android:id="@+id/buttonSortByPriority"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:layout_weight="1"
-       android:text="sort"
+       android:text="sortP"
        android:textColor="#FFF"
        android:background="#03A9F4"/>
+    <Button
+        android:id="@+id/buttonSortByDateTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="sortD"
+        android:textColor="#FFF"
+        android:background="#03A9F4"/>
 
 
 

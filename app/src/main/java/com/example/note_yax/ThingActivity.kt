@@ -19,7 +19,7 @@ class ThingActivity : AppCompatActivity() {
         editDateTime.setText(Data.getThing(text)?.dataTime)
         editPriority.setText(Data.getThing(text)?.priority.toString())
         editState.setText(Data.getThing(text)?.state.toString())
-        if(editState.text.toString().isNotEmpty()){
+        if(editCreateTime.text.toString().isEmpty()){
             val formatter = SimpleDateFormat("YYYY-MM-dd HH:mm:ss") //设置时间格式
             formatter.timeZone = TimeZone.getTimeZone("GMT+08") //设置时区
             val curDate = Date(System.currentTimeMillis()) //获取当前时间
@@ -34,11 +34,20 @@ class ThingActivity : AppCompatActivity() {
             val thingAdd = Thing(editTitle.text.toString(), editContext.text.toString(),
                 createDate,editDateTime.text.toString(),Integer.parseInt(editPriority.text.toString()),
                 Integer.parseInt(editState.text.toString()),Data.getNextId())
-            Data.putThing(thingAdd)
-            val intentSave = Intent()
-            intent.putExtra("data_save", 1)
-            setResult(RESULT_OK, intentSave)
-            finish()
+            val thingChange = Thing(editTitle.text.toString(), editContext.text.toString(),
+                editCreateTime.text.toString(),editDateTime.text.toString(),Integer.parseInt(editPriority.text.toString()),
+                Integer.parseInt(editState.text.toString()),Data.getNextId())
+            if (editCreateTime.text.toString() != createDate){
+                val id = intent.getIntExtra("id",-1)
+                Data.changeThing(id,thingChange)
+                finish()
+            }else {
+                Data.putThing(thingAdd)
+                val intentSave = Intent()
+                intent.putExtra("data_save", 1)
+                setResult(RESULT_OK, intentSave)
+                finish()
+            }
         }
 
 

@@ -8,9 +8,9 @@ object Data {
 
     fun init(){
         repeat(20){
-            map[0 + it * 3] = Thing("2","234","12.15","12.20",6,0, 2)
-            map[1 + it * 3] = Thing("3","123","12.16","12.21",6,0, 8)
-            map[2 + it * 3] = Thing("4","2315","12.15","12.250",4,0,0)
+            map[0 + it * 3] = Thing("2","234","12.15","12.20",6,0, 0)
+            map[1 + it * 3] = Thing("3","123","12.16","12.21",6,0, 1)
+            map[2 + it * 3] = Thing("4","2315","12.15","12.250",4,0,2)
         }
         list = map.values.toList() as MutableList<Thing>
     }
@@ -28,6 +28,10 @@ object Data {
         map[nextId] = thing
         nextId++
     }
+    fun changeThing(id: Int,thing: Thing){
+        map[id] = thing
+        list[id] = thing
+    }
 
     fun getNextId():Int{
         return nextId
@@ -39,9 +43,14 @@ object Data {
     fun getSize():Int{
         return map.size
     }
-    fun sort():List<Thing>{
+    fun sortByPriority():List<Thing>{
         return list.sortedBy {
-            it.id
+            it.priority
+        }
+    }
+    fun sortByDataTime():List<Thing>{
+        return list.sortedBy {
+            it.dataTime
         }
     }
 
