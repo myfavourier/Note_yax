@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 
 
-class MainAdapter(var thingList: List<Thing>) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
+class MainAdapter(var thingList: List<Thing>,var callback:(Int)->Unit) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
 
 
@@ -41,9 +41,10 @@ class MainAdapter(var thingList: List<Thing>) : RecyclerView.Adapter<MainAdapter
         holder.thingState.text = thing.state.toString()
         holder.id = thing.id
         holder.itemView.setOnClickListener {
-            val intentId = Intent(holder.itemView.context, ThingActivity::class.java)
-            intentId.putExtra("id", thing.id)
-            holder.itemView.context.startActivity(intentId)
+           callback(thing.id)
+//            val intentId = Intent(holder.itemView.context, ThingActivity::class.java)
+//            intentId.putExtra("id", thing.id)
+//            holder.itemView.context.startActivity(intentId)
         }
     }
 

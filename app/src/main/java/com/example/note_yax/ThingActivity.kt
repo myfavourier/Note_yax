@@ -12,7 +12,7 @@ class ThingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_thing)
         supportActionBar?.hide()
-        var text = intent.getIntExtra("id", -1)
+        val text = intent.getIntExtra("id", -1)
         editTitle.setText(Data.getThing(text)?.title)
         editContext.setText(Data.getThing(text)?.context)
         editCreateTime.setText(Data.getThing(text)?.createTime)
@@ -37,17 +37,22 @@ class ThingActivity : AppCompatActivity() {
             val thingChange = Thing(editTitle.text.toString(), editContext.text.toString(),
                 editCreateTime.text.toString(),editDateTime.text.toString(),Integer.parseInt(editPriority.text.toString()),
                 Integer.parseInt(editState.text.toString()),Data.getNextId())
-            if (editCreateTime.text.toString() != createDate){
-                val id = intent.getIntExtra("id",-1)
-                Data.changeThing(id,thingChange)
-                finish()
-            }else {
+            if(editTitle.text.toString().isEmpty()){
                 Data.putThing(thingAdd)
                 val intentSave = Intent()
-                intent.putExtra("data_save", 1)
-                setResult(RESULT_OK, intentSave)
+                intentSave.putExtra(Constant.SAVE_PATH, 1)
+                setResult(RESULT_OK, null)
+                finish()
+            } else{
+                val data = intent.getIntExtra("id",0)
+                Data.changeThing(data,thingChange)
+                setResult(RESULT_OK,null)
                 finish()
             }
+
+
+
+
         }
 
 

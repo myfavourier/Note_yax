@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder) {
-            super.clearView(recyclerView!!, viewHolder)
+            super.clearView(recyclerView, viewHolder)
             viewHolder.itemView.setBackgroundColor(Color.TRANSPARENT)
         }
 
@@ -69,10 +69,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         //处理侧滑
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-            val position = viewHolder.adapterPosition
+            val position = (viewHolder as MainAdapter.ViewHolder).id;
             Data.remove(position)
             adapter.thingList = Data.getThingList()
-            adapter.notifyItemRemoved(position)
+            adapter.notifyDataSetChanged()
         }
     })
 
@@ -90,10 +90,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         Data.init()
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        adapter = MainAdapter(Data.getThingList())
+        adapter = MainAdapter((Data.getThingList())){Int ->
+            val intentChange = Intent(this,ThingActivity::class.java)
+            intentChange.putExtra("id",Int)
+            startActivityForResult(intentChange,2)
+
+        }
         recyclerView.adapter = adapter
         itemTouchHelper.attachToRecyclerView(recyclerView)
         buttonAdd.setOnClickListener(this)
+
         buttonSortByPriority.setOnClickListener {
             adapter.thingList =Data.sortByPriority()
             adapter.notifyDataSetChanged()
@@ -126,7 +132,29 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 }
 
             }
-        }
+            2 -> if(resultCode == RESULT_OK){
+                adapter.thingList = Data.getThingList()
+                adapter.notifyDataSetChanged()
+                AlertDialog.Builder(this).apply {
+                    setTitle("操作信息")
+                    setMessage("已修改事件")
+                    setCancelable(false)
+                    setPositiveButton("OK") { dialog, which ->
+                    }
+                    setNegativeButton("Cancel") { dialog, which ->
+                    }
+                    show()
+                }
+
+            }
+            }
+
+
+
+
+
+
+
     }
 
     override fun onClick(v: View?) {
