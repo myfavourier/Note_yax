@@ -1,5 +1,6 @@
 package com.example.note_yax
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -87,7 +88,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         supportActionBar?.hide()//隐藏原标题框
         val dividerItemDecoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         recyclerView.addItemDecoration(dividerItemDecoration)
-        Data.init()
+        Data.init(getSharedPreferences("data",Context.MODE_PRIVATE))
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
         adapter = MainAdapter((Data.getThingList())){Int ->

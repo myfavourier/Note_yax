@@ -37,7 +37,7 @@ class ThingActivity : AppCompatActivity() {
             val thingChange = Thing(editTitle.text.toString(), editContext.text.toString(),
                 editCreateTime.text.toString(),editDateTime.text.toString(),Integer.parseInt(editPriority.text.toString()),
                 Integer.parseInt(editState.text.toString()),Data.getNextId())
-            if(editTitle.text.toString().isEmpty()){
+            if(text == -1){
                 Data.putThing(thingAdd)
                 val intentSave = Intent()
                 intentSave.putExtra(Constant.SAVE_PATH, 1)
@@ -49,8 +49,6 @@ class ThingActivity : AppCompatActivity() {
                 setResult(RESULT_OK,null)
                 finish()
             }
-
-
 
 
         }
